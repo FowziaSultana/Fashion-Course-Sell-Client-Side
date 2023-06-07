@@ -4,26 +4,30 @@ import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import useTitle from "../../hooks/useTitle";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
   useTitle("LOGIN");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
   const { signIn, googleSignUp, setLoading } = useContext(AuthContext);
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
   const navigate = useNavigate();
 
-  const handleLogin = (event) => {
-    //email sign in func
-    event.preventDefault();
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-
-    signIn(email, password)
+  const onSubmit = (data) => {
+    console.log(data);
+    signIn(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
         toast.success("Successfully logged in!!");
-        event.target.reset();
+        reset();
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -44,10 +48,11 @@ const Login = () => {
         console.log("err from google login", err);
         const message = err.message;
         toast.error(message);
-
+        setLoading(false);
         navigate("/login");
       });
   };
+
   return (
     <div className="hero min-h-screen bg-base-200 ">
       <div className="hero-content flex-col md:w-[500px]">
@@ -65,35 +70,37 @@ const Login = () => {
           </p>
         </div>
         <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
-          <form onSubmit={handleLogin} className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
-                name="email"
+                {...register("email", { required: true })}
                 type="email"
                 placeholder="email"
                 className="input input-bordered"
-                required
               />
+              {errors.email && (
+                <span className="text-tahiti">This field is required</span>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <input
-                name="password"
+                {...register("password", { required: true })}
                 type="password"
                 placeholder="password"
                 className="input input-bordered"
-                required
               />
+              {errors.password && (
+                <span className="text-tahiti">This field is required</span>
+              )}
             </div>
             <div className="form-control mt-6">
-              <button type="submit" className="btn btn-error">
-                Login
-              </button>
+              <input className="btn btn-error" type="submit" value="Login" />
             </div>
           </form>
         </div>
