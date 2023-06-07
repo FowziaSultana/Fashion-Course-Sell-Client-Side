@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import app from "../Firebase/Firebase.config";
+
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { toast } from "react-hot-toast";
+import app from "../Firebase/Firebase.config";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);

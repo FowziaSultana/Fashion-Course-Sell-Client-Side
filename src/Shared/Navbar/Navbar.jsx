@@ -2,16 +2,18 @@ import React, { useContext } from "react";
 import logo from "../../assets/Capture.png";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { AuthContext } from "../../Providers/AuthProviders";
+import Loader from "../Loader/Loader";
 
 const Navbar = () => {
-  //   const { user, logOut, loading } = useContext(AuthContext);
-  //   const handlelogOut = () => {
-  //     logOut();
-  //   };
+  const { user, logOut, loading } = useContext(AuthContext);
+  const handlelogOut = () => {
+    logOut();
+  };
 
-  //   if (loading) {
-  //     return <Loader></Loader>;
-  //   }
+  if (loading) {
+    return <Loader></Loader>;
+  }
 
   const logedNavItems = (
     <>
@@ -27,23 +29,20 @@ const Navbar = () => {
       <li>
         <Link to={"/classes"}>Dashboard</Link>
       </li>
-      {/* <li className="block md:hidden">
+      <li className="block md:hidden">
         <span className="flex justify-center items-center gap-2">
           {" "}
           <div
-            className="tooltip tooltip-bottom tooltip-warning"
+            className="tooltip tooltip-bottom tooltip-error"
             data-tip={user?.displayName}
           >
             <img className="profileImage" src={user?.photoURL}></img>
           </div>
-          <button
-            onClick={handlelogOut}
-            className="btn btn-outline btn-warning"
-          >
+          <button onClick={handlelogOut} className="btn btn-outline btn-error">
             Logout
           </button>
         </span>
-      </li> */}
+      </li>
     </>
   );
   const navItems = (
@@ -82,24 +81,24 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100  rounded-box w-52 text-[#ed1d43] "
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100  rounded-box w-52 text-[#721227] "
             >
               {navItems}
-              {/* {user ? logedNavItems : <></>} */}
+              {user ? logedNavItems : <></>}
             </ul>
           </div>
 
           <img className="w-14 h-14 rounded-full" src={logo}></img>
-          <p className="text-lg text-[#ed1d43] ml-4">Couture Castle</p>
+          <p className="text-lg text-[#721227] ml-4">Couture Castle</p>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1  text-[#ed1d43] ">
+          <ul className="menu menu-horizontal px-1  text-[#721227] ">
             {navItems}
             {/* {user ? logedNavItems : <></>} */}
           </ul>
         </div>
         <div className="navbar-end ">
-          {/* {user ? (
+          {user ? (
             <div className="hidden md:block">
               <span className="flex justify-center items-center gap-2 ">
                 {" "}
@@ -111,7 +110,7 @@ const Navbar = () => {
                 </div>
                 <button
                   onClick={handlelogOut}
-                  className="btn btn-outline btn-warning"
+                  className="btn btn-outline btn-error"
                 >
                   Logout
                 </button>
@@ -120,14 +119,14 @@ const Navbar = () => {
           ) : (
             // <button
             //   onClick={handlelogOut}
-            //   className="btn btn-outline btn-warning"
+            //   className="btn btn-outline btn-error"
             // >
             //   Logout
             // </button>
-            <Link to={"/login"} className="btn btn-outline btn-warning">
+            <Link to={"/login"} className="btn btn-outline btn-error">
               Login
             </Link>
-          )} */}
+          )}
         </div>
       </div>
     </div>
