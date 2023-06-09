@@ -7,14 +7,14 @@ const MyClasses = () => {
   const [axiosSecure] = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const { data: classes = [], refetch } = useQuery(["classes"], async () => {
-    const res = await axiosSecure.get("/classes");
+    const res = await axiosSecure.get(`/classes/${user.email}`);
     console.log(res.data);
     return res.data;
   });
   return (
     <div>
-      <h1 className="text-center text-tahiti text-xl lg:text-5xl">
-        My Classes : {classes.length}
+      <h1 className="text-center text-tahiti text-xl lg:text-3xl my-8">
+        My Classes
       </h1>
       <div className="overflow-x-auto">
         <table className="table">
@@ -24,6 +24,7 @@ const MyClasses = () => {
               <th>#</th>
               <th>Class Name</th>
               <th>Fee(Tk)</th>
+              <th>Enrolled Students</th>
               <th>Available Seats</th>
               <th>Status</th>
               <th>Feedback</th>
@@ -49,6 +50,7 @@ const MyClasses = () => {
                   </div>
                 </td>
                 <td>{aClass.price}</td>
+                <td>{aClass.enrolledStudents}</td>
                 <td>{aClass.seats}</td>
                 <td>{aClass.status}</td>
                 {aClass.status == "pending" || aClass.status == "approved" ? (
