@@ -43,7 +43,10 @@ const HomeDashboard = () => {
             {isInstructor && (
               <>
                 <li>
-                  <Link>Add a Class</Link>
+                  <Link to="/dashboard/instructor">Instructor Home</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/addclasses">Add a Class</Link>
                 </li>
                 <li>
                   <Link>My Classes</Link>
