@@ -49,7 +49,7 @@ const HomeDashboard = () => {
                   <Link to="/dashboard/addclasses">Add a Class</Link>
                 </li>
                 <li>
-                  <Link>My Classes</Link>
+                  <Link to="/dashboard/myclasses">My Classes</Link>
                 </li>
               </>
             )}

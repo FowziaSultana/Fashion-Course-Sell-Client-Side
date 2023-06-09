@@ -36,9 +36,9 @@ const AddClasses = () => {
       feedback: "",
       instructorEmail: user.email,
     };
-    console.log(newItem);
+    // console.log(newItem);
     axiosSecure.post("/classes", newItem).then((data) => {
-      console.log("after adding new class", data.data);
+      // console.log("after adding new class", data.data);
       if (data.data.insertedId) {
         reset();
         Swal.fire({
