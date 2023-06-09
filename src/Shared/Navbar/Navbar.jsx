@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "../../assets/Capture.png";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
@@ -6,7 +6,8 @@ import { AuthContext } from "../../Providers/AuthProviders";
 import Loader from "../Loader/Loader";
 
 const Navbar = () => {
-  const { user, logOut, loading } = useContext(AuthContext);
+  const { user, logOut, loading, role } = useContext(AuthContext);
+
   const handlelogOut = () => {
     logOut();
   };
@@ -15,20 +16,26 @@ const Navbar = () => {
     return <Loader></Loader>;
   }
 
+  let linkPath = "";
+
+  if (role === "admin") {
+    linkPath = "/dashboard/admin";
+  } else if (role === "instructor") {
+    linkPath = "/dashboard/instructor";
+  } else if (role === "student") {
+    linkPath = "/dashboard/student";
+  }
+
   const logedNavItems = (
     <>
       <li>
-        <Link to={"/"}>Home</Link>
+        {role === "admin" && <Link to={linkPath}>Dashboard</Link>}
+
+        {role === "student" && <Link to={linkPath}>Dashboard</Link>}
+
+        {role === "instructor" && <Link to={linkPath}>Dashboard</Link>}
       </li>
-      <li>
-        <Link to={"/instructors"}>Instructors</Link>
-      </li>
-      <li>
-        <Link to={"/classes"}>Classes</Link>
-      </li>
-      <li>
-        <Link to={"/classes"}>Dashboard</Link>
-      </li>
+
       <li className="block md:hidden">
         <span className="flex justify-center items-center gap-2">
           {" "}
@@ -94,7 +101,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1  text-[#721227] ">
             {navItems}
-            {/* {user ? logedNavItems : <></>} */}
+            {user ? logedNavItems : <></>}
           </ul>
         </div>
         <div className="navbar-end ">

@@ -1,47 +1,72 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
-import { toast } from "react-hot-toast";
 import { AuthContext } from "../../Providers/AuthProviders";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { toast } from "react-hot-toast";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Registration = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const watchPassword = watch("password", "");
   const navigate = useNavigate();
-  const { signUp } = useContext(AuthContext);
-  const [accept, setAccept] = useState(false);
+  const { signUp, updateUserProfile, setLoading } = useContext(AuthContext);
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
   useTitle("REGISTRATION");
 
-  const handleReg = (event) => {
-    event.preventDefault();
-    const displayName = event.target.name.value;
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const photoURL = event.target.file.value;
-    const profile = {
-      displayName: displayName,
-      photoURL: photoURL,
-    };
+  const onSubmit = (data) => {
+    signUp(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
 
-    if (password.length < 6) {
-      toast.error("Your password must be at least 6 characters");
-      return;
-    } else {
-      signUp(email, password, profile)
-        .then(async (result) => {
-          // setSuccess(true);
-        })
-        .catch((error) => {
-          console.log("error from signup", error);
-          navigate("/");
-        });
-      navigate(from, { replace: true });
-    }
-  };
-
-  const handleChecked = (e) => {
-    setAccept(e.target.checked);
-    console.log(accept);
+        updateUserProfile(data.name, data.photoURL)
+          .then(() => {
+            const saveUser = {
+              name: data.name,
+              email: data.email,
+              role: "student",
+            };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(saveUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  reset();
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User created successfully.",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate("/");
+                }
+              });
+          })
+          .catch((error) => {
+            console.log(error);
+            setLoading(false);
+          });
+      })
+      .catch((err) => {
+        toast.error(err.message);
+        reset();
+        setLoading(false);
+      });
   };
 
   return (
@@ -57,81 +82,110 @@ const Registration = () => {
           </p>
         </div>
         <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
-          <form onSubmit={handleReg} className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
               <input
+                {...register("name", { required: true })}
                 type="text"
                 placeholder="Name"
-                name="name"
                 className="input input-bordered"
-                required
               />
+              {errors.name && (
+                <span className="text-tahiti">Name is required</span>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
-                name="email"
-                type="email"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "Invalid email address",
+                  },
+                })}
                 placeholder="email"
                 className="input input-bordered"
-                required
               />
+
+              {errors.email && (
+                <span className="text-tahiti">{errors.email.message}</span>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <input
-                name="password"
+                id="password"
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 20,
+                })}
                 type="password"
                 placeholder="password"
                 className="input input-bordered"
-                required
               />
+              {errors.password?.type === "required" && (
+                <p className="text-tahiti">Password is required</p>
+              )}
+              {errors.password?.type === "minLength" && (
+                <p className="text-tahiti">Password must be 6 characters</p>
+              )}
+              {errors.password?.type === "maxLength" && (
+                <p className="text-tahiti">
+                  Password must be less than 20 characters
+                </p>
+              )}
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Confirm Password</span>
+              </label>
+
+              <input
+                type="password"
+                placeholder="confirm password"
+                className="input input-bordered"
+                id="confirmPassword"
+                {...register("confirmPassword", {
+                  required: "Confirm Password is required",
+                  validate: (value) =>
+                    value === watchPassword || "Passwords do not match",
+                })}
+              />
+              {errors.confirmPassword && (
+                <p className="text-tahiti">{errors.confirmPassword.message}</p>
+              )}
             </div>
             <div className="form-control mb-2">
               <label className="label">
                 <span className="label-text">Photo</span>
               </label>
               <input
-                required
-                name="file"
+                {...register("photoURL", { required: true })}
                 type="photoURL"
-                className="file-input file-input-bordered file-input-error w-full max-w-xs"
+                className="file-input file-input-bordered w-full "
               />
+              {errors.photoURL && (
+                <span className="text-tahiti">Photo is required</span>
+              )}
             </div>
-            <div className="form-control flex flex-row gap-2 items-center">
-              <span>
-                <input
-                  onClick={handleChecked}
-                  type="checkbox"
-                  className="checkbox checkbox-error"
-                />
-              </span>
 
-              <span className="label-text">
-                Accept{" "}
-                <span className="link-info  underline">
-                  Terms and Condition
-                </span>
-              </span>
-            </div>
             <div className="form-control mt-6">
-              <button
-                type="submit"
-                disabled={!accept}
-                className="btn btn-error"
-              >
+              <button type="submit" className="btn btn-error">
                 Register
               </button>
             </div>
           </form>
         </div>
+        <SocialLogin></SocialLogin>
       </div>
     </div>
   );

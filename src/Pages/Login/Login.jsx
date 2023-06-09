@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import useTitle from "../../hooks/useTitle";
 import { useForm } from "react-hook-form";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import { AiFillEyeInvisible } from "react-icons/ai";
+import { AiFillEye } from "react-icons/ai";
 
 const Login = () => {
   useTitle("LOGIN");
@@ -15,13 +18,14 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  const [showPassword, setShowPassword] = useState(false);
   const { signIn, googleSignUp, setLoading } = useContext(AuthContext);
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     signIn(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
@@ -36,26 +40,12 @@ const Login = () => {
       });
   };
 
-  const handleGoogleLogin = () => {
-    //google  sign in func
-    googleSignUp()
-      .then((res) => {
-        const user = res.user;
-        toast.success("successfully logged in with gmail");
-        navigate(from, { replace: true });
-      })
-      .catch((err) => {
-        console.log("err from google login", err);
-        const message = err.message;
-        toast.error(message);
-        setLoading(false);
-        navigate("/login");
-      });
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
   };
-
   return (
     <div className="hero min-h-screen bg-base-200 ">
-      <div className="hero-content flex-col md:w-[500px]">
+      <div className="hero-content w-[300px] flex-col md:w-[500px]">
         <div className="text-center">
           <h1 className="text-4xl font-bold">Login now!</h1>
           <p className="py-4 w-2/3 mx-auto">
@@ -89,12 +79,25 @@ const Login = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
+
               <input
                 {...register("password", { required: true })}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered "
               />
+              <span onClick={handleTogglePassword} className="btn btn-sm my-3">
+                {showPassword ? (
+                  <>
+                    <AiFillEye></AiFillEye>
+                  </>
+                ) : (
+                  <>
+                    <AiFillEyeInvisible></AiFillEyeInvisible>
+                  </>
+                )}
+              </span>
+
               {errors.password && (
                 <span className="text-tahiti">This field is required</span>
               )}
@@ -104,14 +107,7 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <div className="divider">OR</div>
-
-        <div className="flex flex-col md:flex-row gap-2">
-          <button onClick={handleGoogleLogin} className="btn btn-error">
-            <FaGoogle className="mr-2" />
-            Login with Google
-          </button>
-        </div>
+        <SocialLogin></SocialLogin>
       </div>
     </div>
   );
