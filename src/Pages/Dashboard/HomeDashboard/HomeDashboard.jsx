@@ -56,10 +56,13 @@ const HomeDashboard = () => {
             {isStudent && (
               <>
                 <li>
-                  <Link to={"/"}>My Selected Class</Link>
+                  <Link to="/dashboard/student">Student Home</Link>
                 </li>
                 <li>
-                  <Link to={"/"}>My Enrolled Class</Link>
+                  <Link to={"/dashboard/selectedclass"}>My Selected Class</Link>
+                </li>
+                <li>
+                  <Link to={"/dashboard/enrolledclas"}>My Enrolled Class</Link>
                 </li>
               </>
             )}

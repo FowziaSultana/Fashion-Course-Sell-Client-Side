@@ -18,6 +18,8 @@ import AllUsers from "../Pages/Dashboard/AdminDashboard/AllUsers";
 import AddClasses from "../Pages/Dashboard/InstructorsDashboard/AddClasses";
 import MyClasses from "../Pages/Dashboard/InstructorsDashboard/MyClasses";
 import ManageClasessByAdmin from "../Pages/Dashboard/AdminDashboard/ManageClasessByAdmin";
+import SelectedClass from "../Pages/Dashboard/StudentDashboard/SelectedClass";
+import EnrolledClass from "../Pages/Dashboard/StudentDashboard/EnrolledClass";
 
 const router = createBrowserRouter([
   {
@@ -109,6 +111,22 @@ const router = createBrowserRouter([
         element: (
           <StudentRoute>
             <StudentDashboard></StudentDashboard>
+          </StudentRoute>
+        ),
+      },
+      {
+        path: "selectedclass",
+        element: (
+          <StudentRoute>
+            <SelectedClass></SelectedClass>
+          </StudentRoute>
+        ),
+      },
+      {
+        path: "enrolledclas",
+        element: (
+          <StudentRoute>
+            <EnrolledClass></EnrolledClass>
           </StudentRoute>
         ),
       },
