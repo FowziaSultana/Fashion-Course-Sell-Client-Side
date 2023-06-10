@@ -60,8 +60,7 @@ const AllUsers = () => {
               <th>#</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Make Admin</th>
-              <th>Make Instructor</th>
+              <th className="text-right">Role</th>
             </tr>
           </thead>
           <tbody>
@@ -77,6 +76,7 @@ const AllUsers = () => {
                     <button
                       onClick={() => handleMakeAdmin(user)}
                       className="btn btn-error btn-xs"
+                      disabled={user.role === "instructor"}
                     >
                       Make Admin
                     </button>
@@ -89,6 +89,7 @@ const AllUsers = () => {
                     <button
                       onClick={() => handleMakeInstructor(user)}
                       className="btn btn-error btn-xs"
+                      disabled={user.role === "admin"}
                     >
                       Make Instructor
                     </button>

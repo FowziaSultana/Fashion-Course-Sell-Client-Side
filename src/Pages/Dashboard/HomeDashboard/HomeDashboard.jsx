@@ -36,7 +36,7 @@ const HomeDashboard = () => {
                   <Link to="/dashboard/allUsers">Manage User</Link>
                 </li>
                 <li>
-                  <Link>Manage Classes</Link>
+                  <Link to="/dashboard/manageClasses">Manage Classes</Link>
                 </li>
               </>
             )}

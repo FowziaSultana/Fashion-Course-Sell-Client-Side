@@ -35,6 +35,7 @@ const AddClasses = () => {
       enrolledStudents: parseInt(0),
       feedback: "",
       instructorEmail: user.email,
+      instructorName: user.displayName,
     };
     // console.log(newItem);
     axiosSecure.post("/classes", newItem).then((data) => {
