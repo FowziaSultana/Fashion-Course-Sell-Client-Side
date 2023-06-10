@@ -35,6 +35,7 @@ const Classes = () => {
           studentEmail: user.email,
           classId: classObj._id,
           paymentStatus: "pending",
+          instructorName: classObj.instructorName,
         };
         // console.log(newItem);
         axiosSecure.post("/enrolledClass", newItem).then((data) => {
@@ -55,6 +56,7 @@ const Classes = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 place-items-center gap-y-10">
         {classes.map((aClass) => (
           <div
+            key={aClass._id}
             className={`max-w-sm ${
               aClass.seats === 0 ? "bg-[#f87171]" : "bg-white"
             }  rounded-lg shadow-xl p-5 hover:shadow-tahiti`}

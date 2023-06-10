@@ -4,6 +4,7 @@ import { AuthContext } from "../../Providers/AuthProviders";
 import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { toast } from "react-hot-toast";
+import { data } from "autoprefixer";
 
 const SocialLogin = () => {
   const { googleSignUp, setLoading } = useContext(AuthContext);
@@ -19,6 +20,7 @@ const SocialLogin = () => {
           name: user.displayName,
           email: user.email,
           role: "student",
+          photo: user.photoURL,
         };
         fetch("http://localhost:5000/users", {
           method: "POST",
