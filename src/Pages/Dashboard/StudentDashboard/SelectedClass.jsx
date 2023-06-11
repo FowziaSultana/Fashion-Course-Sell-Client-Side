@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { FaAmazonPay, FaTrash } from "react-icons/fa";
 import { AuthContext } from "../../../Providers/AuthProviders";
+import { Link } from "react-router-dom";
 
 const SelectedClass = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -13,7 +14,8 @@ const SelectedClass = () => {
   const { data: classes = [], refetch } = useQuery(["classes"], async () => {
     const res = await axiosSecure.get(`/enrolledClass`);
     const finalClasses = res.data.filter(
-      (aCls) => aCls.studentEmail == user.email
+      (aCls) =>
+        aCls.studentEmail == user.email && aCls.isEnrolled != "completed"
     );
     //console.log(finalClasses);
     return finalClasses;
@@ -91,9 +93,13 @@ const SelectedClass = () => {
                     >
                       <FaTrash></FaTrash>
                     </button>
-                    <button className=" btn btn-error btn-outline">
+                    <Link
+                      to={"/dashboard/payment"}
+                      state={{ classDetails: aClass }}
+                      className=" btn btn-error btn-outline"
+                    >
                       <FaAmazonPay></FaAmazonPay>
-                    </button>
+                    </Link>
                   </div>
                 </td>
               </tr>

@@ -64,6 +64,11 @@ const HomeDashboard = () => {
                 <li>
                   <Link to={"/dashboard/enrolledclas"}>My Enrolled Class</Link>
                 </li>
+                <li>
+                  <Link to={"/dashboard/paymenthistory"}>
+                    My Payment History
+                  </Link>
+                </li>
               </>
             )}
             <li>

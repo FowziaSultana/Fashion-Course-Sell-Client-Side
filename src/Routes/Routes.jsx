@@ -20,6 +20,8 @@ import MyClasses from "../Pages/Dashboard/InstructorsDashboard/MyClasses";
 import ManageClasessByAdmin from "../Pages/Dashboard/AdminDashboard/ManageClasessByAdmin";
 import SelectedClass from "../Pages/Dashboard/StudentDashboard/SelectedClass";
 import EnrolledClass from "../Pages/Dashboard/StudentDashboard/EnrolledClass";
+import Payment from "../Pages/Dashboard/StudentDashboard/AllPayment/Payment";
+import PaymentHistory from "../Pages/Dashboard/StudentDashboard/AllPayment/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -127,6 +129,22 @@ const router = createBrowserRouter([
         element: (
           <StudentRoute>
             <EnrolledClass></EnrolledClass>
+          </StudentRoute>
+        ),
+      },
+      {
+        path: "payment",
+        element: (
+          <StudentRoute>
+            <Payment></Payment>
+          </StudentRoute>
+        ),
+      },
+      {
+        path: "paymenthistory",
+        element: (
+          <StudentRoute>
+            <PaymentHistory></PaymentHistory>
           </StudentRoute>
         ),
       },
