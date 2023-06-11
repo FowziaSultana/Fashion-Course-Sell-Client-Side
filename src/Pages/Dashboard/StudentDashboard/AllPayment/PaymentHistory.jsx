@@ -10,11 +10,11 @@ const PaymentHistory = () => {
   //fetching all selected classes
   const { data: payments = [], refetch } = useQuery(["payments"], async () => {
     const res = await axiosSecure.get(`/paymentDetails`);
-    const finalClasses = res.data.filter(
-      (aCls) => aCls.studentEmail == user.email
+    const finalPayments = res.data.filter(
+      (aPay) => aPay.studentEmail == user.email
     );
-    //console.log(finalClasses);
-    return finalClasses;
+    //console.log(finalPayments);
+    return finalPayments;
   });
   return (
     <div>
@@ -33,22 +33,22 @@ const PaymentHistory = () => {
             </tr>
           </thead>
           <tbody>
-            {payments.map((aClass, index) => (
-              <tr key={aClass._id}>
+            {payments.map((aPayment, index) => (
+              <tr key={aPayment._id}>
                 <td>{index + 1}</td>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div>
-                      <div className="font-bold">{aClass.classesName}</div>
+                      <div className="font-bold">{aPayment.classesName}</div>
                     </div>
                   </div>
                 </td>
                 <td>
-                  <span className="uppercase">{aClass.instructorName}</span>
+                  <span className="uppercase">{aPayment.instructorName}</span>
                 </td>
-                <td>{aClass.price}</td>
-                <td>{aClass.transactionId}</td>
-                <td>{aClass.date}</td>
+                <td>{aPayment.price}</td>
+                <td>{aPayment.transactionId}</td>
+                <td>{aPayment.date}</td>
               </tr>
             ))}
           </tbody>
