@@ -3,6 +3,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* body {
+body {
   font-family: "Cormorant Upright", serif;
-} */
+}

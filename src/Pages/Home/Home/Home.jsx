@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <div className="container mx-auto">
-      <p className="bg-red-500 text-black dark:bg-red-800 dark:text-white">
+      {/* <p className="bg-red-500 text-black dark:bg-red-800 dark:text-white">
         I am home
       </p>
       <input
@@ -38,7 +38,7 @@ const Home = () => {
         id="myTheme"
         type="checkbox"
         className="toggle"
-      />
+      /> */}
       <Slider></Slider>
       <Topinstructors></Topinstructors>
       <Content></Content>
