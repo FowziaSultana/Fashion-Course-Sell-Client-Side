@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
-import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import useTitle from "../../hooks/useTitle";
