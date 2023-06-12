@@ -23,6 +23,9 @@ const Registration = () => {
   useTitle("REGISTRATION");
 
   const onSubmit = (data) => {
+    const tempEmail = data.email;
+    const regEmail = tempEmail.toLowerCase();
+
     signUp(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
@@ -32,7 +35,7 @@ const Registration = () => {
           .then(() => {
             const saveUser = {
               name: data.name,
-              email: data.email,
+              email: regEmail,
               role: "student",
               photo: data.photoURL,
             };

@@ -100,7 +100,7 @@ const Navbar = () => {
           id="myCheck"
           className="toggle"
         /> */}
-        <div className="flex ">
+        <div className="flex place-self-center -m-1">
           {" "}
           <span>Light</span>
           <input

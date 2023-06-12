@@ -7,7 +7,7 @@ const StudentDashboard = () => {
   return (
     <div>
       <h1 className="text-[#721227] text-6xl">
-        Welcome Student {user.displayName}{" "}
+        Welcome Student <span className="uppercase">{user.displayName}</span>{" "}
       </h1>
     </div>
   );

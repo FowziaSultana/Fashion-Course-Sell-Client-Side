@@ -58,7 +58,7 @@ const Classes = () => {
           <div
             key={aClass._id}
             className={`max-w-sm ${
-              aClass.seats === 0 ? "bg-[#f87171]" : "bg-white"
+              aClass.seats === 0 ? "bg-[#cf1919]" : "bg-white"
             }  rounded-lg shadow-xl p-5 hover:shadow-[#721227]`}
           >
             <a href="#">
