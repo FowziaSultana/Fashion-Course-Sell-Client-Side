@@ -6,7 +6,7 @@ const Content = () => {
       <div className="grid gap-10 lg:grid-cols-2">
         <div className="flex flex-col justify-center md:pr-8 xl:pr-0 lg:max-w-lg">
           <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-teal-accent-400">
-            <svg className="text-teal-900 w-7 h-7" viewBox="0 0 24 24">
+            <svg className="text-[#721227] w-7 h-7" viewBox="0 0 24 24">
               <polyline
                 fill="none"
                 stroke="currentColor"
@@ -49,35 +49,18 @@ const Content = () => {
             </svg>
           </div>
           <div className="max-w-xl mb-6">
-            <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
-              Let us handle
-              <br className="hidden md:block" />
-              your next{" "}
-              <span className="inline-block text-deep-purple-accent-400">
-                destination
-              </span>
+            <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-[#721227] sm:text-4xl sm:leading-none">
+              Calling Fashion Visionaries
             </h2>
-            <p className="text-base text-gray-700 md:text-lg">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-              quae. explicabo.
+            <p className="text-base text-[#ac546c]  md:text-lg">
+              Couture Castle invites you to join our esteemed team of
+              instructors! Become a guiding light for aspiring designers,
+              imparting your invaluable knowledge and shaping the future of
+              fashion.
             </p>
           </div>
           <div>
-            <a
-              href="/"
-              aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-            >
-              Learn more
-              <svg
-                className="inline-block w-3 ml-2"
-                fill="currentColor"
-                viewBox="0 0 12 12"
-              >
-                <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
-              </svg>
-            </a>
+            <button className="btn btn-error">Learn More</button>
           </div>
         </div>
         <div className="flex items-center justify-center -mx-4 lg:pl-8">
