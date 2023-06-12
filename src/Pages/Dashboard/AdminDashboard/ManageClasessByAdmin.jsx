@@ -105,7 +105,7 @@ const ManageClasessByAdmin = () => {
   return (
     <>
       <div>
-        <h1 className="text-tahiti text-4xl mb-8"> Manage all Classes</h1>
+        <h1 className="text-[#721227] text-4xl mb-8"> Manage all Classes</h1>
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
@@ -207,7 +207,7 @@ const ManageClasessByAdmin = () => {
               className="input input-bordered"
             />
             {errors.feed?.type === "required" && (
-              <p className="text-tahiti">Feedback is required</p>
+              <p className="text-[#721227]">Feedback is required</p>
             )}
             <input className="btn btn-warning " type="submit"></input>
           </form>

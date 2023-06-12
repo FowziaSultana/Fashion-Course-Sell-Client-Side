@@ -107,7 +107,7 @@ const Checkoutform = ({ enrolledDetails }) => {
 
   return (
     <div className="w-3/4 h-[400px] p-10 mx-auto ">
-      <h1 className="text-tahiti text-4xl mb-8"> Make Your payment</h1>
+      <h1 className="text-[#721227] text-4xl mb-8"> Make Your payment</h1>
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{
@@ -128,13 +128,13 @@ const Checkoutform = ({ enrolledDetails }) => {
         <button
           className="btn btn-error mt-8 "
           type="submit"
-          disabled={!stripe || !clientSecret || processing}
+          disabled={!stripe || !clientSecret || processing || transactionId}
         >
           Pay
         </button>
       </form>
       {cardError && (
-        <p className="text-tahiti font-semibold mt-5">{cardError}</p>
+        <p className="text-[#721227] font-semibold mt-5">{cardError}</p>
       )}
       {transactionId && (
         <p className="text-blue-500">

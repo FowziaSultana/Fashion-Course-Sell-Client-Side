@@ -54,7 +54,7 @@ const AddClasses = () => {
   };
   return (
     <div className=" container mx-auto w-3/4 bg-[#F4F3F0] px-3 md:px-24 py-5 md:py-14 mt-11 rounded-lg">
-      <h1 className="text-center text-tahiti text-xl lg:text-5xl">
+      <h1 className="text-center text-[#721227] text-xl lg:text-5xl">
         Add Classes
       </h1>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -65,7 +65,7 @@ const AddClasses = () => {
         >
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-tahiti font-semibold text-xl">
+              <span className="label-text text-[#721227] font-semibold text-xl">
                 Name
               </span>
             </label>
@@ -76,12 +76,12 @@ const AddClasses = () => {
               className="input input-bordered "
             />
             {errors.name && (
-              <span className="text-tahiti">This field is required</span>
+              <span className="text-[#721227]">This field is required</span>
             )}
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-tahiti font-semibold text-xl">
+              <span className="label-text text-[#721227] font-semibold text-xl">
                 Price(Tk)
               </span>
             </label>
@@ -92,7 +92,7 @@ const AddClasses = () => {
               className="input input-bordered "
             />
             {errors.price && (
-              <span className="text-tahiti">This field is required</span>
+              <span className="text-[#721227]">This field is required</span>
             )}
           </div>
         </div>
@@ -103,7 +103,7 @@ const AddClasses = () => {
         >
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-tahiti font-semibold text-xl">
+              <span className="label-text text-[#721227] font-semibold text-xl">
                 Available seats
               </span>
             </label>
@@ -114,13 +114,13 @@ const AddClasses = () => {
               className="input input-bordered "
             />
             {errors.seats && (
-              <span className="text-tahiti">This field is required</span>
+              <span className="text-[#721227]">This field is required</span>
             )}
           </div>
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-tahiti font-semibold text-xl">
+              <span className="label-text text-[#721227] font-semibold text-xl">
                 Photo
               </span>
             </label>
@@ -132,7 +132,7 @@ const AddClasses = () => {
               name="photo"
             />
             {errors.photo && (
-              <span className="text-tahiti">This field is required</span>
+              <span className="text-[#721227]">This field is required</span>
             )}
           </div>
         </div>
@@ -143,7 +143,7 @@ const AddClasses = () => {
         >
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-tahiti font-semibold text-xl">
+              <span className="label-text text-[#721227] font-semibold text-xl">
                 Instructor
               </span>
             </label>
@@ -156,7 +156,7 @@ const AddClasses = () => {
           </div>{" "}
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-tahiti font-semibold text-xl">
+              <span className="label-text text-[#721227] font-semibold text-xl">
                 Email
               </span>
             </label>

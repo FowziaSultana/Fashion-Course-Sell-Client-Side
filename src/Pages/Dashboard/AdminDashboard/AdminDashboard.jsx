@@ -6,7 +6,7 @@ const AdminDashboard = () => {
   const { user } = useContext(AuthContext);
   return (
     <div>
-      <h1 className="text-tahiti text-6xl">
+      <h1 className="text-[#721227] text-6xl">
         Welcome Admin {user.displayName}{" "}
       </h1>
     </div>

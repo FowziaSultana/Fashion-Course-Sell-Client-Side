@@ -50,7 +50,7 @@ const Classes = () => {
 
   return (
     <div>
-      <h1 className="text-center text-tahiti text-xl lg:text-5xl my-8">
+      <h1 className="text-center text-[#721227] text-xl lg:text-5xl my-8">
         All Classes
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 place-items-center gap-y-10">
@@ -59,7 +59,7 @@ const Classes = () => {
             key={aClass._id}
             className={`max-w-sm ${
               aClass.seats === 0 ? "bg-[#f87171]" : "bg-white"
-            }  rounded-lg shadow-xl p-5 hover:shadow-tahiti`}
+            }  rounded-lg shadow-xl p-5 hover:shadow-[#721227]`}
           >
             <a href="#">
               <img
@@ -70,22 +70,24 @@ const Classes = () => {
             </a>
             <div className="p-5">
               <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-tahiti ">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-[#721227] ">
                   {aClass.name}
                 </h5>
               </a>
               <p className=" font-normal text-gray-700 ">
-                <span className="font-bold text-tahiti">
+                <span className="font-bold text-[#721227]">
                   Course Instructor:
                 </span>{" "}
                 <span className="uppercase">{aClass.instructorName}</span>
               </p>
               <p className=" font-normal text-gray-700 ">
-                <span className="font-bold text-tahiti"> Course FEE:</span>{" "}
+                <span className="font-bold text-[#721227]"> Course FEE:</span>{" "}
                 {aClass.price} tk
               </p>
               <p className="mb-3 font-normal text-gray-700 ">
-                <span className="font-bold text-tahiti">Available seats:</span>{" "}
+                <span className="font-bold text-[#721227]">
+                  Available seats:
+                </span>{" "}
                 {aClass.seats}
               </p>
               {user ? (

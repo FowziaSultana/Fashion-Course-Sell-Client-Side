@@ -13,7 +13,7 @@ const Instructors = () => {
   });
   return (
     <div className="text-center">
-      <h1 className="text-tahiti text-4xl my-8 "> OUR INSTRUCTORS</h1>
+      <h1 className="text-[#721227] text-4xl my-8 "> OUR INSTRUCTORS</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 place-items-center gap-y-10">
         {users.map((aClass) => (
           <div
@@ -29,7 +29,7 @@ const Instructors = () => {
             </a>
             <div className="p-5">
               <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-tahiti ">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-[#721227] ">
                   {aClass.name}
                 </h5>
               </a>

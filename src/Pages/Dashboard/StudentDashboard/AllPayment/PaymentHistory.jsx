@@ -18,7 +18,7 @@ const PaymentHistory = () => {
   });
   return (
     <div>
-      <h1 className="text-tahiti text-4xl mb-8">My Payments</h1>
+      <h1 className="text-[#721227] text-4xl mb-8">My Payments</h1>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

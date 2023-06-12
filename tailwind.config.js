@@ -1,10 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
-    colors: {
-      tahiti: "#721227",
-    },
+    // colors: {
+    //   [#721227]: "#721227",
+    // },
     extend: {},
   },
   daisyui: {

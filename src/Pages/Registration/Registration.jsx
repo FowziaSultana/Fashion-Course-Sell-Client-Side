@@ -95,7 +95,7 @@ const Registration = () => {
                 className="input input-bordered"
               />
               {errors.name && (
-                <span className="text-tahiti">Name is required</span>
+                <span className="text-[#721227]">Name is required</span>
               )}
             </div>
             <div className="form-control">
@@ -115,7 +115,7 @@ const Registration = () => {
               />
 
               {errors.email && (
-                <span className="text-tahiti">{errors.email.message}</span>
+                <span className="text-[#721227]">{errors.email.message}</span>
               )}
             </div>
             <div className="form-control">
@@ -134,13 +134,13 @@ const Registration = () => {
                 className="input input-bordered"
               />
               {errors.password?.type === "required" && (
-                <p className="text-tahiti">Password is required</p>
+                <p className="text-[#721227]">Password is required</p>
               )}
               {errors.password?.type === "minLength" && (
-                <p className="text-tahiti">Password must be 6 characters</p>
+                <p className="text-[#721227]">Password must be 6 characters</p>
               )}
               {errors.password?.type === "maxLength" && (
-                <p className="text-tahiti">
+                <p className="text-[#721227]">
                   Password must be less than 20 characters
                 </p>
               )}
@@ -162,7 +162,9 @@ const Registration = () => {
                 })}
               />
               {errors.confirmPassword && (
-                <p className="text-tahiti">{errors.confirmPassword.message}</p>
+                <p className="text-[#721227]">
+                  {errors.confirmPassword.message}
+                </p>
               )}
             </div>
             <div className="form-control mb-2">
@@ -175,7 +177,7 @@ const Registration = () => {
                 className="file-input file-input-bordered w-full "
               />
               {errors.photoURL && (
-                <span className="text-tahiti">Photo is required</span>
+                <span className="text-[#721227]">Photo is required</span>
               )}
             </div>
 

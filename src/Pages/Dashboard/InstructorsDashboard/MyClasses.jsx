@@ -13,7 +13,7 @@ const MyClasses = () => {
   });
   return (
     <div>
-      <h1 className="text-center text-tahiti text-xl lg:text-3xl my-8">
+      <h1 className="text-center text-[#721227] text-xl lg:text-3xl my-8">
         My Classes
       </h1>
       <div className="overflow-x-auto">

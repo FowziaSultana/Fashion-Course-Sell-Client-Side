@@ -72,7 +72,7 @@ const Login = () => {
                 className="input input-bordered"
               />
               {errors.email && (
-                <span className="text-tahiti">This field is required</span>
+                <span className="text-[#721227]">This field is required</span>
               )}
             </div>
             <div className="form-control">
@@ -99,7 +99,7 @@ const Login = () => {
               </span>
 
               {errors.password && (
-                <span className="text-tahiti">This field is required</span>
+                <span className="text-[#721227]">This field is required</span>
               )}
             </div>
             <div className="form-control mt-6">
