@@ -36,13 +36,16 @@ const Registration = () => {
               role: "student",
               photo: data.photoURL,
             };
-            fetch("http://localhost:5000/users", {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(saveUser),
-            })
+            fetch(
+              "https://b7a12-summer-camp-server-side-fowzia-sultana.vercel.app/users",
+              {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify(saveUser),
+              }
+            )
               .then((res) => res.json())
               .then((data) => {
                 if (data.insertedId) {
@@ -128,6 +131,7 @@ const Registration = () => {
                   required: true,
                   minLength: 6,
                   maxLength: 20,
+                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/,
                 })}
                 type="password"
                 placeholder="password"
@@ -142,6 +146,11 @@ const Registration = () => {
               {errors.password?.type === "maxLength" && (
                 <p className="text-[#721227]">
                   Password must be less than 20 characters
+                </p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="text-red-600">
+                  Password must have one Uppercase and one special character.
                 </p>
               )}
             </div>

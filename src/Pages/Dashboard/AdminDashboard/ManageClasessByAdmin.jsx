@@ -27,9 +27,12 @@ const ManageClasessByAdmin = () => {
 
   const handleApprove = (id, name) => {
     // console.log(id);
-    fetch(`http://localhost:5000/classes/${id}?status=approved`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://b7a12-summer-camp-server-side-fowzia-sultana.vercel.app/classes/${id}?status=approved`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -47,9 +50,12 @@ const ManageClasessByAdmin = () => {
   };
   const handleDeny = (id, name) => {
     // console.log(id);
-    fetch(`http://localhost:5000/classes/${id}?status=denied`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://b7a12-summer-camp-server-side-fowzia-sultana.vercel.app/classes/${id}?status=denied`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -77,9 +83,12 @@ const ManageClasessByAdmin = () => {
     reset();
     const id = myId.classId;
     //console.log(feed, myId.classId);
-    fetch(`http://localhost:5000/updatefeedback/${id}?feedback=${feed}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://b7a12-summer-camp-server-side-fowzia-sultana.vercel.app/updatefeedback/${id}?feedback=${feed}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

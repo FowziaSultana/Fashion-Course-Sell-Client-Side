@@ -33,9 +33,12 @@ const SelectedClass = () => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         // console.log(id);
-        fetch(`http://localhost:5000/enrolledClass/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://b7a12-summer-camp-server-side-fowzia-sultana.vercel.app/enrolledClass/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             //console.log(data);

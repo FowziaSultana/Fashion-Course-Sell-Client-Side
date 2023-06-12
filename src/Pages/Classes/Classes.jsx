@@ -104,6 +104,7 @@ const Classes = () => {
                 </button>
               ) : (
                 <button
+                  disabled={aClass.seats == 0}
                   className="btn btn-error btn-outline"
                   onClick={() => window.my_modal_5.showModal()}
                 >

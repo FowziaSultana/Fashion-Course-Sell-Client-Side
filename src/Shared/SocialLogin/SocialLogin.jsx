@@ -22,13 +22,16 @@ const SocialLogin = () => {
           role: "student",
           photo: user.photoURL,
         };
-        fetch("http://localhost:5000/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(saveUser),
-        })
+        fetch(
+          "https://b7a12-summer-camp-server-side-fowzia-sultana.vercel.app/users",
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          }
+        )
           .then((res) => res.json())
           .then(() => {
             Swal.fire({

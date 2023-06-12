@@ -3,7 +3,7 @@ import logo from "../../assets/Capture.png";
 
 const Footer = () => {
   return (
-    <footer className="footer mt-10 p-10 bg-[#c2b9c9] text-[#721227]">
+    <footer className="footer mt-10 p-10 bg-[#c2b9c9] text-[#721227] dark:bg-[#1c2424] dark:text-white">
       <div>
         <img src={logo} className="h-20 w-20"></img>
         <p>

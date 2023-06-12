@@ -1,9 +1,6 @@
 import React from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./Slider.css";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -60,7 +57,7 @@ const Slider = () => {
         className="mySwiper mt-7"
       >
         <SwiperSlide className="relative ">
-          <div className=" absolute top-0 left-0 text-[#721227] h-full w-full  grid grid-cols-1 content-center space-y-3 md:space-y-5 pl-4 md:pl-8 rounded-lg">
+          <div className=" absolute top-0 left-0 text-[#721227] h-full w-full  grid grid-cols-1 content-center space-y-3 md:space-y-5 pl-4 md:pl-7 rounded-lg">
             <h1 className=" hidden md:block text-4xl lg:text-6xl font-bold">
               Master the Art of <br></br> Design at<br></br> Couture Castle
             </h1>
@@ -78,7 +75,7 @@ const Slider = () => {
           />
         </SwiperSlide>
         <SwiperSlide className="relative ">
-          <div className=" absolute top-0 left-0 text-[#721227] h-full w-full  grid grid-cols-1 content-center space-y-3 md:space-y-5 pl-4 md:pl-8 rounded-lg">
+          <div className=" absolute top-0 left-0 text-[#721227] h-full w-full  grid grid-cols-1 content-center space-y-3 md:space-y-5 pl-4 md:pl-7 rounded-lg">
             <h1 className=" hidden md:block text-4xl lg:text-6xl font-bold">
               Enroll today and become <br></br>the next fashion sensation!
             </h1>
@@ -97,7 +94,7 @@ const Slider = () => {
           />
         </SwiperSlide>
         <SwiperSlide className="relative ">
-          <div className=" absolute top-0 left-0 text-[#721227] h-full w-full  grid grid-cols-1 content-center space-y-3 md:space-y-5 pl-4 md:pl-8 rounded-lg">
+          <div className=" absolute top-0 left-0 text-[#721227] h-full w-full  grid grid-cols-1 content-center space-y-3 md:space-y-5 pl-4 md:pl-6 rounded-lg">
             <h1 className=" hidden md:block text-4xl lg:text-6xl font-bold">
               Unlock Your Fashion <br></br> Potential
             </h1>

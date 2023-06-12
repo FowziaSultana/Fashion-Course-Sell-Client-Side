@@ -5,7 +5,36 @@ import "./Navbar.css";
 import { AuthContext } from "../../Providers/AuthProviders";
 import Loader from "../Loader/Loader";
 
+import { themeChange } from "theme-change";
+
 const Navbar = () => {
+  const [checkBox, setCheckbox] = useState(false);
+  const handlecheck = (event) => {
+    //setCheckbox(document.getElementById("myCheck").checked);
+    setCheckbox(event.target.checked);
+    if (!checkBox) {
+      // Whenever the user explicitly chooses dark mode
+      localStorage.theme = "dark";
+    } else if (checkBox) {
+      // Whenever the user explicitly chooses light mode
+      localStorage.theme = "light";
+    }
+
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+    alert(document.getElementById("myCheck").checked);
+  };
+
+  // console.log(checkBox);
   const { user, logOut, loading, role } = useContext(AuthContext);
 
   const handlelogOut = () => {
@@ -52,6 +81,7 @@ const Navbar = () => {
       </li>
     </>
   );
+
   const navItems = (
     <>
       <li>
@@ -63,10 +93,29 @@ const Navbar = () => {
       <li>
         <Link to={"/classes"}>Classes</Link>
       </li>
+      <li className=" place-self-center">
+        {/* <input
+          type="checkbox"
+          onClick={handlecheck}
+          id="myCheck"
+          className="toggle"
+        /> */}
+        <div className="flex ">
+          {" "}
+          <span>Light</span>
+          <input
+            type="checkbox"
+            id="myTheme"
+            onChange={handlecheck}
+            className="toggle"
+          />
+          <span>Dark</span>
+        </div>
+      </li>
     </>
   );
   return (
-    <div className=" bg-[#c2b9c9] font-semibold">
+    <div className=" bg-[#c2b9c9] font-semibold dark:bg-[#1c2424] dark:text-white ">
       <div className="container mx-auto navbar">
         <div className="navbar-start">
           <div className="dropdown">
@@ -88,7 +137,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100  rounded-box w-52 text-[#721227] "
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100  rounded-box w-52 text-[#721227] absolute z-30 dark:text-white dark:bg-[#1c2424]"
             >
               {navItems}
               {user ? logedNavItems : <></>}
@@ -96,10 +145,12 @@ const Navbar = () => {
           </div>
 
           <img className="w-14 h-14 rounded-full" src={logo}></img>
-          <p className="text-lg text-[#721227] ml-4">Couture Castle</p>
+          <p className="text-lg text-[#721227] ml-4 dark:text-white">
+            Couture Castle
+          </p>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1  text-[#721227] ">
+          <ul className="menu menu-horizontal px-1  text-[#721227] dark:text-white">
             {navItems}
             {user ? logedNavItems : <></>}
           </ul>
@@ -130,7 +181,10 @@ const Navbar = () => {
             // >
             //   Logout
             // </button>
-            <Link to={"/login"} className="btn btn-outline btn-error">
+            <Link
+              to={"/login"}
+              className="btn btn-outline btn-error  dark:btn-neutral "
+            >
               Login
             </Link>
           )}

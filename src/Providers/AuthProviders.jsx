@@ -56,7 +56,10 @@ const AuthProvider = ({ children }) => {
       setUser(loggedUser);
       if (loggedUser) {
         axios
-          .post("http://localhost:5000/jwt", { email: loggedUser.email })
+          .post(
+            "https://b7a12-summer-camp-server-side-fowzia-sultana.vercel.app/jwt",
+            { email: loggedUser.email }
+          )
           .then((data) => {
             //console.log(data.data.token);
             localStorage.setItem("access-token", data.data.token);
@@ -67,7 +70,9 @@ const AuthProvider = ({ children }) => {
       }
 
       if (loggedUser) {
-        fetch(`http://localhost:5000/checkuser?email=${loggedUser.email}`)
+        fetch(
+          `https://b7a12-summer-camp-server-side-fowzia-sultana.vercel.app/checkuser?email=${loggedUser.email}`
+        )
           .then((res) => res.json())
           .then((data) => setRole(data.role));
       } else {
@@ -88,7 +93,7 @@ const AuthProvider = ({ children }) => {
   //     // get and set token
   //     if (currentUser) {
   //       axios
-  //         .post("http://localhost:5000/jwt", {
+  //         .post("https://b7a12-summer-camp-server-side-fowzia-sultana.vercel.app/jwt", {
   //           email: currentUser.email,
   //         })
   //         .then((data) => {

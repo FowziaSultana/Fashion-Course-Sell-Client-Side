@@ -37,6 +37,8 @@ const Login = () => {
       .catch((err) => {
         const mess = err.message;
         toast.error(mess);
+        navigate("/login");
+        setLoading(false);
       });
   };
 

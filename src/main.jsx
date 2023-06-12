@@ -11,11 +11,13 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <Routes></Routes>
-        <Toaster />
-      </QueryClientProvider>
-    </AuthProvider>
+    <div className="bg-gray-50 dark:bg-black">
+      <AuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <Routes></Routes>
+          <Toaster />
+        </QueryClientProvider>
+      </AuthProvider>
+    </div>
   </React.StrictMode>
 );
