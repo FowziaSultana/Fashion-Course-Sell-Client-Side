@@ -23,3 +23,8 @@
 - mongodb is used as a database
 - used stripe for payment gateway
 - uses different types of animation
+
+## Admin pass and email
+
+- Admin email: admin@gmail.com
+- Password: Admin123@
