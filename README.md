@@ -28,3 +28,8 @@
 
 - Admin email: admin@gmail.com
 - Password: Admin123@
+
+## Instructor pass and email
+
+- Instructor email:user@gmail.com
+- Password :User123@
